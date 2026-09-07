@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GPX Converter</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>GPX Converter</h1>
+    <p class="subtitle">將座標列表轉換為標準 GPX 格式</p>
+
+    <div class="form-group">
+      <label for="coords">座標輸入 <span id="coord-count" class="badge">0 筆</span></label>
+      <textarea id="coords" rows="12" placeholder="每行一組座標，支援以下格式：&#10;16.9158097, 74.3140207&#10;16.9157005 74.3143216&#10;16.9159349, 74.3146409, 起點"></textarea>
+    </div>
+
+    <div class="settings">
+      <div class="form-group">
+        <label for="filename">檔案名稱</label>
+        <input type="text" id="filename" value="route.gpx" />
+      </div>
+      <div class="form-group">
+        <label for="trackname">軌跡名稱</label>
+        <input type="text" id="trackname" value="我的路線" />
+      </div>
+      <div class="form-group">
+        <label for="mode">輸出模式</label>
+        <select id="mode">
+          <option value="track">軌跡 (trkseg)</option>
+          <option value="waypoint">航點 (wpt)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button id="btn-generate" class="btn btn-primary">產生 GPX</button>
+      <button id="btn-download" class="btn btn-success" disabled>下載 GPX</button>
+    </div>
+
+    <div id="preview-section" class="preview-section" style="display:none">
+      <div class="preview-header" id="preview-toggle">
+        <span>GPX 預覽</span>
+        <span class="arrow">&#9660;</span>
+      </div>
+      <pre id="preview"></pre>
+    </div>
+
+    <div id="error-msg" class="error-msg" style="display:none"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

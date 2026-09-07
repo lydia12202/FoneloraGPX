@@ -1,0 +1,12 @@
+{
+  "name": "gpx-converter",
+  "version": "1.0.0",
+  "description": "座標列表轉換為 GPX 格式的網頁工具",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
