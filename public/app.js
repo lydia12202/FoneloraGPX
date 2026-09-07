@@ -57,21 +57,19 @@ function escapeXml(str) {
 
 function generateGPX(coords, trackName, mode) {
   let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
-  xml += '<gpx version="1.1" creator="GPX Converter"\n';
-  xml += '     xmlns="http://www.topografix.com/GPX/1/1">\n';
+  xml += '<gpx>\n';
 
   if (mode === 'track') {
     xml += '  <trk>\n';
-    xml += `    <name>${escapeXml(trackName)}</name>\n`;
-    xml += '    <trkseg>\n';
+    xml += '    <trkseg from="1" mode="3">\n';
     for (const c of coords) {
-      xml += `      <trkpt lat="${c.lat}" lon="${c.lon}" />\n`;
+      xml += `      <trkpt lon="${c.lon}" lat="${c.lat}" />\n`;
     }
     xml += '    </trkseg>\n';
     xml += '  </trk>\n';
   } else {
     for (const c of coords) {
-      xml += `  <wpt lat="${c.lat}" lon="${c.lon}">`;
+      xml += `  <wpt lon="${c.lon}" lat="${c.lat}">`;
       if (c.name) {
         xml += `\n    <name>${escapeXml(c.name)}</name>\n  `;
       }
